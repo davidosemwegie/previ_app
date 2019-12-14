@@ -23,8 +23,16 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import * as firebase from 'firebase'
 
+import * as Font from 'expo-font';
+Font.loadAsync({
+  'sf-rounded-semibold': require('./assets/fonts/SF_Font_Rounded.ttf'),
+  'sf-rounded-heavy': require('./assets/fonts/SF-Pro-Rounded-Heavy.ttf'),
+});
+
 /* SCREEN IMPORTS */
 import * as screens from './screens/index'
+
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyAR7KvV0jPoxk7iQAq2WDO47eJ7FCF-qQc",
@@ -40,6 +48,12 @@ firebase.initializeApp(firebaseConfig);
 
 const AppStack = createStackNavigator({
   Home: screens.HomeScreen
+},
+{
+  headerMode: 'none',
+  navigationOptions: {
+      headerVisible: false,
+  }
 })
 
 const AuthStack = createStackNavigator({
