@@ -4,11 +4,14 @@ import {
     Text,
     StyleSheet,
     Platform,
-    StatusBar
+    StatusBar,
+    TouchableOpacity
 } from "react-native";
 
 import PageTitle from './PageTitle'
+import HedaerIcon from './HeaderIcon'
 import * as colors from '../colors'
+import HeaderIcon from "./HeaderIcon";
 
 const Header = (props) => {
 
@@ -20,10 +23,13 @@ const Header = (props) => {
         }
     };
 
-    const { container} = styles
+    const { container } = styles
     return (
         <View style={container}>
-            <PageTitle title={props.title}/>
+            <View>
+                <PageTitle {... props} />
+            </View>
+            <HeaderIcon  {... props}/>
             {props.children}
         </View>
     )
@@ -33,6 +39,8 @@ export default Header;
 const styles = StyleSheet.create({
     container: {
         height: 110,
-        backgroundColor: colors.background
+        backgroundColor: colors.background,
+        flexDirection: "row",
+        justifyContent: "flex-start"
     }
 })

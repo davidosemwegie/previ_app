@@ -1,25 +1,6 @@
-// import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.js to start working on your app!</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { fromBottom, fromTop } from 'react-navigation-transitions';
 
 import * as firebase from 'firebase'
 
@@ -31,6 +12,7 @@ Font.loadAsync({
 
 /* SCREEN IMPORTS */
 import * as screens from './screens/index'
+import { fromDebug } from 'bytebuffer';
 
 
 
@@ -46,14 +28,34 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+
+/* HANDLING TRANSISITIONS */
+const handleCustomTransition = ({ scenes }) => {
+  const prevScene = scenes[scenes.length - 2];
+  const nextScene = scenes[scenes.length - 1];
+ 
+  // Custom transitions go there
+  if (prevScene
+    && prevScene.route.routeName === 'Home'
+    && nextScene.route.routeName === 'NewActivity') {
+    return fromBottom();
+  } else if (prevScene
+    && prevScene.route.routeName === 'NewActivity'
+    && nextScene.route.routeName === 'Home') {
+    return fromTop();
+  }
+}
+
 const AppStack = createStackNavigator({
-  Home: screens.HomeScreen
+  Home: screens.HomeScreen,
+  NewActivity: screens.NewActivityScreen
 },
 {
   headerMode: 'none',
   navigationOptions: {
-      headerVisible: false,
-  }
+      headerVisible: true,
+  },
+  transitionConfig: (nav) => handleCustomTransition(nav)
 })
 
 const AuthStack = createStackNavigator({

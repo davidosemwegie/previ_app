@@ -40,5 +40,6 @@ module.exports = {
     background : "#FFFFFF",
     mainText: "#000000",
     lightgrey: "#E8E8E8",
-    darkgrey: "#989494"
+    darkgrey: "#989494",
+    icons: "#FFFFFF"
 }

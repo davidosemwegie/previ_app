@@ -100,6 +100,18 @@ class RegisterScreen extends Component {
                 })
             })
             .catch(error => this.setState({ errorMessage: error.message }))
+
+            //this.sendVerification()
+    }
+
+    sendVerification = () => {
+        var user = firebase.auth().currentUser;
+
+        user.sendEmailVerification().then(function () {
+            alert("You have been sent a verification email")
+        }).catch(function (error) {
+            alert(error.message)
+        });
     }
 
     render() {
