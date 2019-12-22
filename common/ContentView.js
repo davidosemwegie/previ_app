@@ -16,9 +16,10 @@ export default ContentView;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        //flex: 1,
         //backgroundColor: "pink",
-        paddingTop: 15
+        paddingTop: 15,
+        //backgroundColor: 'red',
         // alignItems: 'center',
         // justifyContent: 'center'
     }

@@ -1,0 +1,19 @@
+DATA BASE DESIGN FOR PREVI
+
+users {
+    username,
+    key
+}
+
+activity {
+    activityId,
+    title,
+    startDate,
+    color,
+    status
+}
+
+activityUpate {
+    activityId,
+    date,
+}
