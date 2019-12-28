@@ -6,7 +6,7 @@ import {
     FlatList
 } from "react-native";
 
-import ActvityCard from './ActivityCard'
+import ActivityCard from './ActivityCard'
 
 class ActvityList extends Component {
 
@@ -14,7 +14,7 @@ class ActvityList extends Component {
         {
             activityId: 1,
             title: "Had Coffee",
-            activityStatus: 0,
+            days: 0,
             lastDate: '18-12-2019',
             color: "#318FEB",
             streak: 2
@@ -22,7 +22,7 @@ class ActvityList extends Component {
         {
             activityId: 2,
             title: "Took a walk",
-            activityStatus: 1,
+            days: 1,
             lastDate: '18-12-2019',
             color: "#3BC09E",
             streak: 3
@@ -30,10 +30,80 @@ class ActvityList extends Component {
         {
             activityId: 3,
             title: "Go to the gym",
-            activityStatus: 2,
+            days: 2,
             lastDate: '18-12-2019',
             color: "#D33632",
             streak: 18
+        },{
+            activityId: 4,
+            title: "Eat breakfast",
+            days: 18,
+            lastDate: '18-12-2019',
+            color: "#318FEB",
+            streak: 2
+        },
+        {
+            activityId: 5,
+            title: "Took a walk",
+            days: 1,
+            lastDate: '18-12-2019',
+            color: "#3BC09E",
+            streak: 3
+        },
+        {
+            activityId: 6,
+            title: "Go to the gym",
+            days: 2,
+            lastDate: '18-12-2019',
+            color: "#D33632",
+            streak: 18
+        },
+        {
+            activityId: 7,
+            title: "Had Coffee",
+            days: 0,
+            lastDate: '18-12-2019',
+            color: "#318FEB",
+            streak: 2
+        },
+        {
+            activityId: 8,
+            title: "Took a walk",
+            days: 1,
+            lastDate: '18-12-2019',
+            color: "#3BC09E",
+            streak: 3
+        },
+        {
+            activityId: 9,
+            title: "Go to the gym",
+            days: 2,
+            lastDate: '18-12-2019',
+            color: "#D33632",
+            streak: 18
+        },
+        {
+            activityId: 10,
+            title: "Had Coffee",
+            days: 0,
+            lastDate: '18-12-2019',
+            color: "#318FEB",
+            streak: 2
+        },
+        {
+            activityId: 11,
+            title: "Took a walk",
+            days: 1,
+            lastDate: '18-12-2019',
+            color: "#3BC09E",
+            streak: 3
+        },
+        {
+            activityId: 12,
+            title: "Go to the gym",
+            days: 2,
+            lastDate: '18-12-2019',
+            color: "#D33632"
         }
     ]
     
@@ -43,14 +113,14 @@ class ActvityList extends Component {
             <View style={styles.container}>
                 <FlatList
                     // data={this.props.data}
-                    data={this.data}
+                    data={this.props.data}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) =>
-                        <ActvityCard
+                        <ActivityCard
                         title={item.title}
-                        status = {item.activityStatus}
+                        daysMissed = {item.days}
                         color = {item.color}
-                        streak = {item.streak}
+                        date={item.lastDate}
                              />
                     }
                     keyExtractor={(item) => item.activityId}
@@ -63,9 +133,8 @@ export default ActvityList;
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1,
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // backgroundColor: "blue",
+        flex: 1,
+        justifyContent: 'center',
+        // backgroundColor: 'salmon'
     }
 });

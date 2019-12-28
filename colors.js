@@ -37,9 +37,18 @@ if (darkmode == 0) {
 }
 
 module.exports = {
-    background : "#FFFFFF",
+    background : "#F4F4F4",
     mainText: "#000000",
     lightgrey: "#E8E8E8",
     darkgrey: "#989494",
-    icons: "#FFFFFF"
+    icons: "#FFFFFF",
+    status: {
+        good: "#2ecc71",
+        warning: '#f1c40f',
+        bad: '#c0392b'
+    },
+    text: {
+        light: "#ffffff",
+        dark: "#3E3E3E"
+    }
 }

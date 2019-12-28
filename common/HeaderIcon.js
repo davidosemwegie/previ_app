@@ -11,8 +11,8 @@ import * as colors from '../colors'
 const HeaderIcon = (props) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={props.iconPress}>
-                <Ionicons name={props.iconType} size={40} color={colors.icon} />
+            <TouchableOpacity onPress={props.headerIconPress}>
+                <Ionicons name={props.headerIcon} size={35} color={colors.icon} />
             </TouchableOpacity>
         </View>
     )

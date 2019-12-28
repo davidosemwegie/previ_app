@@ -23,14 +23,16 @@ const Header = (props) => {
         }
     };
 
-    const { container } = styles
+    const { container, subTitle, headerMain, title } = styles
     return (
         <View style={container}>
-            <View>
-                <PageTitle {... props} />
+            <View style={headerMain}>
+                <View>
+                    <Text style={title}>{props.title}</Text>
+                </View>
+                <HeaderIcon  {...props} />
             </View>
-            <HeaderIcon  {... props}/>
-            {props.children}
+            <Text style={subTitle}>{props.subText}</Text>
         </View>
     )
 }
@@ -38,9 +40,26 @@ export default Header;
 
 const styles = StyleSheet.create({
     container: {
-        height: 110,
-        backgroundColor: colors.background,
+        height: 120,
+        backgroundColor: colors.backgroundColor,
+    },
+    headerMain: {
         flexDirection: "row",
-        justifyContent: "flex-start"
+        justifyContent: 'flex-end',
+        marginHorizontal: 20,
+    },
+    title: {
+        marginTop: 65,
+        fontSize: 40,
+        fontFamily: "sf-rounded-heavy",
+        fontWeight: '100',
+        color: colors.mainText
+    },
+    subTitle: {
+        fontFamily: 'sf-rounded-semibold',
+        fontSize: 20,
+        color: colors.darkgrey,
+        marginTop: 10,
+        marginLeft: 20
     }
 })

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { 
+import {
     View,
     Text,
     StyleSheet
@@ -11,9 +11,9 @@ import * as colors from '../colors'
 class NewActivityScreen extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <common.Header title="Add Activity" iconType="md-close" iconPress = {() => this.props.navigation.goBack()}/>
-            </View>
+            <common.Screen title="Add Activity" headerIcon="md-close" headerIconPress={() => this.props.navigation.goBack()} >
+                
+            </common.Screen>
         );
     }
 }

@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
         //flex: 1,
         //backgroundColor: "pink",
         paddingTop: 15,
-        //backgroundColor: 'red',
+        //marginHorizontal: 20
+        //backgroundColor: 'salmon',
         // alignItems: 'center',
         // justifyContent: 'center'
     }
