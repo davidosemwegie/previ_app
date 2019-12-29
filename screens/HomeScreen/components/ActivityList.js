@@ -10,103 +10,25 @@ import ActivityCard from './ActivityCard'
 
 class ActvityList extends Component {
 
-    data = [
-        {
-            activityId: 1,
-            title: "Had Coffee",
-            days: 0,
-            lastDate: '18-12-2019',
-            color: "#318FEB",
-            streak: 2
-        },
-        {
-            activityId: 2,
-            title: "Took a walk",
-            days: 1,
-            lastDate: '18-12-2019',
-            color: "#3BC09E",
-            streak: 3
-        },
-        {
-            activityId: 3,
-            title: "Go to the gym",
-            days: 2,
-            lastDate: '18-12-2019',
-            color: "#D33632",
-            streak: 18
-        },{
-            activityId: 4,
-            title: "Eat breakfast",
-            days: 18,
-            lastDate: '18-12-2019',
-            color: "#318FEB",
-            streak: 2
-        },
-        {
-            activityId: 5,
-            title: "Took a walk",
-            days: 1,
-            lastDate: '18-12-2019',
-            color: "#3BC09E",
-            streak: 3
-        },
-        {
-            activityId: 6,
-            title: "Go to the gym",
-            days: 2,
-            lastDate: '18-12-2019',
-            color: "#D33632",
-            streak: 18
-        },
-        {
-            activityId: 7,
-            title: "Had Coffee",
-            days: 0,
-            lastDate: '18-12-2019',
-            color: "#318FEB",
-            streak: 2
-        },
-        {
-            activityId: 8,
-            title: "Took a walk",
-            days: 1,
-            lastDate: '18-12-2019',
-            color: "#3BC09E",
-            streak: 3
-        },
-        {
-            activityId: 9,
-            title: "Go to the gym",
-            days: 2,
-            lastDate: '18-12-2019',
-            color: "#D33632",
-            streak: 18
-        },
-        {
-            activityId: 10,
-            title: "Had Coffee",
-            days: 0,
-            lastDate: '18-12-2019',
-            color: "#318FEB",
-            streak: 2
-        },
-        {
-            activityId: 11,
-            title: "Took a walk",
-            days: 1,
-            lastDate: '18-12-2019',
-            color: "#3BC09E",
-            streak: 3
-        },
-        {
-            activityId: 12,
-            title: "Go to the gym",
-            days: 2,
-            lastDate: '18-12-2019',
-            color: "#D33632"
+    resetActivity = (activityId, prevDate) => {
+        const today = new Date();
+        const year = today.getFullYear();      // 1980
+        const month = today.getMonth() + 1;        // 6
+        const date = today.getDate();          // 31
+
+        const t = `${month}/${date}/${year}`
+
+        const lastDate = new Date(prevDate).toDateString();
+        const todayDate = new Date(t).toDateString();
+
+        const isSame = lastDate === todayDate;
+
+        if (isSame) {
+            alert("The dates are the same")
+        } else {
+            alert("They are different")
         }
-    ]
-    
+    }
 
     render() {
         return (
@@ -117,10 +39,12 @@ class ActvityList extends Component {
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) =>
                         <ActivityCard
+                        extraData={this.state}
                         title={item.title}
                         daysMissed = {item.days}
                         color = {item.color}
-                        date={item.lastDate}
+                        lastDate={item.lastDate}
+                        statusButtonPressed = {() => this.resetActivity(item.activityId, item.lastDate)}
                              />
                     }
                     keyExtractor={(item) => item.activityId}

@@ -20,7 +20,7 @@ export default AddActivityButton;
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        backgroundColor: "#3498db",
+        backgroundColor: colors.addbutton,
         height: 50,
         width: 50,
         borderRadius: 25,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
             height: 1,
         },
         shadowOpacity: 0.20,
-        shadowRadius: 5,
+        shadowRadius: 10,
         elevation: 5,
         position: "absolute",
         bottom: 0

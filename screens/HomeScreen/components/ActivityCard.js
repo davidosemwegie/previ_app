@@ -24,7 +24,7 @@ const CardMessages = (props) => {
 
     if (props.daysMissed == 0) {
         return (
-            <Text style={props.style}>Just Started</Text>
+            <Text style={props.style}>Not completed today</Text>
         )
     } else if (props.daysMissed == 1) {
         return (
@@ -38,17 +38,42 @@ const CardMessages = (props) => {
 }
 
 const StatusIndicatior = (props) => {
+
+    const today = new Date();
+    const year = today.getFullYear();      // 1980
+    const month = today.getMonth() + 1;        // 6
+    const date = today.getDate();          // 31
+
+    const t = `${month}/${date}/${year}`
+
+    const lastDate = new Date(props.lastDate).toDateString();
+    const todayDate = new Date(t).toDateString();
+
+    const isSame = lastDate === todayDate;
+
+    const { good, warning, bad, incomplete } = styles
+
     if (props.daysMissed == 0) {
-        return (
-            <View style={{ height: 28, width: 28, borderRadius: 28 / 2, backgroundColor: `${colors.status.good}` }}></View>
-        )
+        if (isSame) {
+            return (
+                <TouchableOpacity style={incomplete} onPress={props.statusButtonPressed} ></TouchableOpacity>
+            )
+        } else {
+            return (
+                <TouchableOpacity style={good} onPress={props.statusButtonPressed} ></TouchableOpacity>
+            )
+        }
     } else if (props.daysMissed == 1) {
         return (
-            <BlinkView delay={1000} style={{ height: 28, width: 28, borderRadius: 28 / 2, backgroundColor: `${colors.status.warning}` }} />
+            <TouchableOpacity onPress={props.statusButtonPressed}>
+                <BlinkView delay={1000} style={warning} />
+            </TouchableOpacity>
         )
     } else if (props.daysMissed >= 2) {
         return (
-            <BlinkView delay={500} style={{ height: 28, width: 28, borderRadius: 28 / 2, backgroundColor: `${colors.status.bad}` }} />
+            <TouchableOpacity onPress={props.statusButtonPressed} >
+                <BlinkView delay={500} style={bad} />
+            </TouchableOpacity>
         )
     }
 }
@@ -146,12 +171,11 @@ class ActivityCard extends Component {
                     marginTop: 25,
                     marginHorizontal: 20,
                     height: 80,
-                    //width:'90%',
                     paddingHorizontal: 20,
                     paddingVertical: 10,
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    backgroundColor: `white`,
+                    backgroundColor: `${this.props.color}`,
                     borderRadius: 20,
                     shadowColor: `${this.props.color}`,
                     shadowOffset: {
@@ -160,7 +184,6 @@ class ActivityCard extends Component {
                     },
                     shadowOpacity: 0.70,
                     shadowRadius: 5,
-
                     elevation: 5,
                 }}>
                 <View style={detailColumn}>
@@ -169,8 +192,8 @@ class ActivityCard extends Component {
                 </View>
                 <View style={detailRow}>
                     <View style={statusCircleOuter}>
-                        <StatusIndicatior daysMissed={this.props.daysMissed} />
-                </View>
+                        <StatusIndicatior daysMissed={this.props.daysMissed} {... this.props} />
+                    </View>
                     {/* <Text style={streak}>{props.streak} {props.unit}</Text> */}
                     {/* <TouchableOpacity onPress={() => this.setState({ icon: "ios-checkmark-circle" })}>
                         <Ionicons name={`${this.state.icon}`} size={30} color={colors.icon} />
@@ -196,11 +219,11 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         shadowRadius: 2,
-        elevation: 5,
+        elevation: 5
     },
     detailRow: {
         justifyContent: 'center'
-        
+
     },
     detailColumn: {
         flexDirection: "column",
@@ -209,12 +232,12 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: "sf-rounded-heavy",
         fontSize: 25,
-        color: colors.text.dark
+        color: colors.text.light
     },
     message: {
         fontFamily: "sf-rounded-heavy",
         fontSize: 18,
-        color: colors.text.dark,
+        color: colors.text.light,
         justifyContent: 'center',
         marginTop: 10
         // backgroundColor: 'yellow'
@@ -232,4 +255,60 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    good: {
+        height: 28,
+        width: 28,
+        borderRadius: 28 / 2,
+        backgroundColor: `${colors.status.good}`,
+        shadowColor: `${colors.status.good}`,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.70,
+        shadowRadius: 5,
+        elevation: 5,
+    },
+    warning: {
+        height: 28,
+        width: 28,
+        borderRadius: 28 / 2,
+        backgroundColor: `${colors.status.warning}`,
+        shadowColor: `${colors.status.warning}`,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.70,
+        shadowRadius: 5,
+        elevation: 5,
+    },
+    bad: {
+        height: 28,
+        width: 28,
+        borderRadius: 28 / 2,
+        backgroundColor: `${colors.status.bad}`,
+        shadowColor: `${colors.status.bad}`,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.70,
+        shadowRadius: 5,
+        elevation: 5,
+    },
+    incomplete: {
+        height: 28,
+        width: 28,
+        borderRadius: 28 / 2,
+        backgroundColor: `${colors.status.incomplete}`,
+        shadowColor: `${colors.status.incomplete}`,
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.70,
+        shadowRadius: 5,
+        elevation: 5,
+    }
 });

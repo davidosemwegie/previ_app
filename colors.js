@@ -45,10 +45,13 @@ module.exports = {
     status: {
         good: "#2ecc71",
         warning: '#f1c40f',
-        bad: '#c0392b'
+        bad: '#c0392b',
+        incomplete: '#ffffff'
     },
     text: {
         light: "#ffffff",
-        dark: "#3E3E3E"
-    }
+        dark: "#3E3E3E",
+        black: "#000000"
+    },
+    addbutton: "#000000"
 }

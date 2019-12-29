@@ -27,105 +27,105 @@ const HomeScreenRender = (props) => {
 
 class HomeScreen extends Component {
 
-    // data = [
-    //     {
-    //         activityId: 1,
-    //         title: "Had Coffee",
-    //         days: 0,
-    //         lastDate: '18-12-2019',
-    //         color: "#318FEB",
-    //         streak: 2
-    //     },
-    //     {
-    //         activityId: 2,
-    //         title: "Took a walk",
-    //         days: 1,
-    //         lastDate: '18-12-2019',
-    //         color: "#3BC09E",
-    //         streak: 3
-    //     },
-    //     {
-    //         activityId: 3,
-    //         title: "Go to the gym",
-    //         days: 2,
-    //         lastDate: '18-12-2019',
-    //         color: "#D33632",
-    //         streak: 18
-    //     }, {
-    //         activityId: 4,
-    //         title: "Had Coffee",
-    //         days: 0,
-    //         lastDate: '18-12-2019',
-    //         color: "#318FEB",
-    //         streak: 2
-    //     },
-    //     {
-    //         activityId: 5,
-    //         title: "Took a walk",
-    //         days: 1,
-    //         lastDate: '18-12-2019',
-    //         color: "#3BC09E",
-    //         streak: 3
-    //     },
-    //     {
-    //         activityId: 6,
-    //         title: "Go to the gym",
-    //         days: 2,
-    //         lastDate: '18-12-2019',
-    //         color: "#D33632",
-    //         streak: 18
-    //     },
-    //     {
-    //         activityId: 7,
-    //         title: "Had Coffee",
-    //         days: 0,
-    //         lastDate: '18-12-2019',
-    //         color: "#318FEB",
-    //         streak: 2
-    //     },
-    //     {
-    //         activityId: 8,
-    //         title: "Took a walk",
-    //         days: 1,
-    //         lastDate: '18-12-2019',
-    //         color: "#3BC09E",
-    //         streak: 3
-    //     },
-    //     {
-    //         activityId: 9,
-    //         title: "Go to the gym",
-    //         days: 2,
-    //         lastDate: '18-12-2019',
-    //         color: "#D33632",
-    //         streak: 18
-    //     },
-    //     {
-    //         activityId: 10,
-    //         title: "Had Coffee",
-    //         days: 0,
-    //         lastDate: '18-12-2019',
-    //         color: "#318FEB",
-    //         streak: 2
-    //     },
-    //     {
-    //         activityId: 11,
-    //         title: "Took a walk",
-    //         days: 1,
-    //         lastDate: '18-12-2019',
-    //         color: "#3BC09E",
-    //         streak: 3
-    //     },
-    //     {
-    //         activityId: 12,
-    //         title: "Go to the gym",
-    //         days: 2,
-    //         lastDate: '18-12-2019',
-    //         color: "#D33632"
-    //     }
-    // ]
-
     data = [
+        {
+            activityId: 1,
+            title: "Had Coffee",
+            days: 0,
+            lastDate: '12/28/2019',
+            color: "#318FEB",
+            streak: 2
+        },
+        {
+            activityId: 2,
+            title: "Took a walk",
+            days: 1,
+            lastDate: '12/11/2019',
+            color: "#3BC09E",
+            streak: 3
+        },
+        {
+            activityId: 3,
+            title: "Go to the gym",
+            days: 2,
+            lastDate: '12/12/2019',
+            color: "#D33632",
+            streak: 18
+        }, {
+            activityId: 4,
+            title: "Had Coffee",
+            days: 0,
+            lastDate: '12/14/2019',
+            color: "#318FEB",
+            streak: 2
+        },
+        // {
+        //     activityId: 5,
+        //     title: "Took a walk",
+        //     days: 1,
+        //     lastDate: '18-12-2019',
+        //     color: "#3BC09E",
+        //     streak: 3
+        // },
+        // {
+        //     activityId: 6,
+        //     title: "Go to the gym",
+        //     days: 2,
+        //     lastDate: '18-12-2019',
+        //     color: "#D33632",
+        //     streak: 18
+        // },
+        // {
+        //     activityId: 7,
+        //     title: "Had Coffee",
+        //     days: 0,
+        //     lastDate: '18-12-2019',
+        //     color: "#318FEB",
+        //     streak: 2
+        // },
+        // {
+        //     activityId: 8,
+        //     title: "Took a walk",
+        //     days: 1,
+        //     lastDate: '18-12-2019',
+        //     color: "#3BC09E",
+        //     streak: 3
+        // },
+        // {
+        //     activityId: 9,
+        //     title: "Go to the gym",
+        //     days: 2,
+        //     lastDate: '18-12-2019',
+        //     color: "#D33632",
+        //     streak: 18
+        // },
+        // {
+        //     activityId: 10,
+        //     title: "Had Coffee",
+        //     days: 0,
+        //     lastDate: '18-12-2019',
+        //     color: "#318FEB",
+        //     streak: 2
+        // },
+        // {
+        //     activityId: 11,
+        //     title: "Took a walk",
+        //     days: 1,
+        //     lastDate: '18-12-2019',
+        //     color: "#3BC09E",
+        //     streak: 3
+        // },
+        // {
+        //     activityId: 12,
+        //     title: "Go to the gym",
+        //     days: 2,
+        //     lastDate: '18-12-2019',
+        //     color: "#D33632"
+        // }
     ]
+
+    // data = [
+    // ]
 
 
     state = {
@@ -207,7 +207,7 @@ class HomeScreen extends Component {
                     <common.Screen title={`Hello ${this.state.displayName}`} headerIcon="md-settings" headerIconPress={() => this.props.navigation.navigate("Settings")} subText={`${this.state.date}`}>
                         <ActivityList data={this.state.data} />
                     </common.Screen>
-                    <AddActivityButton />
+                    <AddActivityButton addActivityButtonPressed={() => this.props.navigation.navigate("NewActivity")}/>
                 </View>
             )
         }

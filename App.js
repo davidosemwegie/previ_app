@@ -47,7 +47,7 @@ const handleCustomTransition = ({ scenes }) => {
 }
 
 const AppStack = createStackNavigator({
-  Home: screens.HomeScreen,
+  //Home: screens.HomeScreen,
   NewActivity: screens.NewActivityScreen,
   Settings: screens.SettingsScreen
 },
