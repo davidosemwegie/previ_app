@@ -7,8 +7,7 @@ import {
 } from "react-native";
 
 import * as firebase from 'firebase'
-import * as colors from '../../colors';
-
+import * as colors from '../../colors'
 
 import * as common from '../../common/index'
 
@@ -21,7 +20,7 @@ class SettingsScreen extends Component {
     render() {
         return (
             <common.Screen title="Settings" headerIcon="md-close" headerIconPress={() => this.props.navigation.goBack()} >
-                <Button title="Sign Out" onPress={() => this.signOutUser()} />
+                <common.Button title="Sign Out" buttonColor="#D33632" onPress={() => this.signOutUser()} />
             </common.Screen>
         );
     }

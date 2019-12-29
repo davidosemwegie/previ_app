@@ -1,7 +1,7 @@
 import HomeScreen from './HomeScreen/HomeScreen'
 import LoadingScreen from './LoadingScreen'
-import LoginScreen from './LoginScreen'
-import RegisterScreen from './RegisterScreen'
+import LoginScreen from './Auth/LoginScreen'
+import RegisterScreen from './Auth/RegisterScreen'
 import NewActivityScreen from './NewActivityScreen/NewActivityScreen'
 import SettingsScreen from './SettingsScreen/SettingsScreen'
 

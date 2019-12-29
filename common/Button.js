@@ -2,23 +2,25 @@ import React from "react";
 import {
     View,
     Text,
-    StyleSheet,
+    StyleSheet, 
     TouchableOpacity
 } from "react-native";
 
-import * as colors from '../../../colors'
+import * as colors from '../colors'
 
-const SaveButton = (props) => {
+const Button = (props) => {
     return (
         <TouchableOpacity
             style={{
                 height: 45,
-                width: 120,
+                //width: 120,
+                paddingHorizontal: 10,
                 alignSelf: "center",
                 backgroundColor: `${props.buttonColor}`,
                 borderRadius: 20,
                 alignItems: "center",
-                justifyContent: 'center'
+                justifyContent: 'center',
+                marginVertical: 20
             }}
             onPress={props.onPress}>
             <Text
@@ -29,12 +31,16 @@ const SaveButton = (props) => {
                     fontWeight: '900',
                     color: colors.text.light
                 }}
-            >SAVE</Text>
+            >{props.title}</Text>
         </TouchableOpacity>
     )
 }
-export default SaveButton;
+export default Button;
 
 const styles = StyleSheet.create({
-
+    container: {
+        // flex: 1,
+        // alignItems: 'center',
+        // justifyContent: 'center'
+    }
 });

@@ -47,7 +47,7 @@ const handleCustomTransition = ({ scenes }) => {
 }
 
 const AppStack = createStackNavigator({
-  //Home: screens.HomeScreen,
+  Home: screens.HomeScreen,
   NewActivity: screens.NewActivityScreen,
   Settings: screens.SettingsScreen
 },
@@ -62,6 +62,12 @@ const AppStack = createStackNavigator({
 const AuthStack = createStackNavigator({
   Login: screens.LoginScreen,
   Register: screens.RegisterScreen
+},
+{
+  headerMode: 'none',
+  navigationOptions: {
+      headerVisible: true,
+  }
 })
 
 export default createAppContainer(
