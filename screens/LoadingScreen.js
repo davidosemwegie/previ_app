@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { 
+import {
     View,
     Text,
     StyleSheet,
@@ -19,8 +19,8 @@ class LoadingScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>LoadingScreen</Text>
-                <ActivityIndicator size = "large"></ActivityIndicator>
+                <Text style={styles.loadingText}>Please wait while we get everything ready for you</Text>
+                <ActivityIndicator size="large" color="#0000ff" />
             </View>
         );
     }
@@ -30,7 +30,15 @@ export default LoadingScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        justifyContent: 'center'
+        marginHorizontal: 10
+    },
+    loadingText: {
+        //marginTop: 32,
+        fontSize: 35,
+        textAlign: "center",
+        //fontFamily: "sf-rounded-heavy",
+        marginVertical: 20
     }
 });

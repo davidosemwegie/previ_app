@@ -34,7 +34,7 @@ const CardMessages = (props) => {
         return (
             <Text style={props.style}>You have missed {props.daysMissed} days</Text>
         )
-    }
+    } 
 }
 
 const StatusIndicatior = (props) => {
@@ -144,11 +144,6 @@ const StatusIndicatior = (props) => {
 
 class ActivityCard extends Component {
 
-    state = {
-        icon: "ios-checkmark-circle-outline",
-        isBlinking: false
-    }
-
     render() {
 
 
@@ -167,33 +162,16 @@ class ActivityCard extends Component {
 
         return (
             <View
-                style={{
-                    marginTop: 25,
-                    marginHorizontal: 20,
-                    height: 80,
-                    paddingHorizontal: 20,
-                    paddingVertical: 10,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    backgroundColor: `${this.props.color}`,
-                    borderRadius: 20,
-                    shadowColor: `${this.props.color}`,
-                    shadowOffset: {
-                        width: 0,
-                        height: 1,
-                    },
-                    shadowOpacity: 0.70,
-                    shadowRadius: 5,
-                    elevation: 5,
-                }}>
+                style={[container, {backgroundColor: `${this.props.color}`, shadowColor: `${this.props.color}`}]}
+                >
                 <View style={detailColumn}>
                     <Text style={title}>{this.props.title}</Text>
                     <CardMessages style={message} daysMissed={this.props.daysMissed} streak={this.props.streak} />
                 </View>
                 <View style={detailRow}>
-                    <View style={statusCircleOuter}>
+                    {/* <View style={statusCircleOuter}>
                         <StatusIndicatior daysMissed={this.props.daysMissed} {... this.props} />
-                    </View>
+                    </View> */}
                     {/* <Text style={streak}>{props.streak} {props.unit}</Text> */}
                     {/* <TouchableOpacity onPress={() => this.setState({ icon: "ios-checkmark-circle" })}>
                         <Ionicons name={`${this.state.icon}`} size={30} color={colors.icon} />
@@ -208,18 +186,22 @@ export default ActivityCard;
 const styles = StyleSheet.create({
     container: {
         marginTop: 25,
-        height: 100,
+        marginHorizontal: 20,
+        height: 80,
+        marginBottom:10,
         paddingHorizontal: 20,
         paddingVertical: 10,
-        flexDirection: "column",
-        justifyContent: 'space-between',
-        backgroundColor: '#318FEB',
+        flexDirection: "row",
+        justifyContent: "space-between",
         borderRadius: 20,
-        shadowColor: '#3BC09E',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-        elevation: 5
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.70,
+        shadowRadius: 5,
+        elevation: 5,
+
     },
     detailRow: {
         justifyContent: 'center'
@@ -240,7 +222,6 @@ const styles = StyleSheet.create({
         color: colors.text.light,
         justifyContent: 'center',
         marginTop: 10
-        // backgroundColor: 'yellow'
     },
     lastCompleted: {
         fontSize: 12,

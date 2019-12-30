@@ -13,7 +13,9 @@ import * as colors from '../../colors';
 import * as common from '../../common/index'
 
 import AddActivityButton from './components/AddActivityButton'
-import ActivityList from './components/ActivityList'
+import * as comp from './components/index'
+// import BuildList from './components/BuildList'
+// import QuitList from './components/QuitList'
 
 const HomeScreenRender = (props) => {
     if (this.state.data == []) {
@@ -202,11 +204,14 @@ class HomeScreen extends Component {
                 </View>
             )
         } else {
+
+
             return (
                 <View style={{ flex: 1 }}>
                     <common.Screen title={`Hello ${this.state.displayName}`} headerIcon="md-settings" headerIconPress={() => this.props.navigation.navigate("Settings")} subText={`${this.state.date}`}>
-                        <ActivityList data={this.state.data} />
-                    </common.Screen>
+                        <comp.BuildList data={this.state.data} />
+                        <comp.QuitList data={this.state.data} />
+                    </common.Screen  >    
                     <AddActivityButton addActivityButtonPressed={() => this.props.navigation.navigate("NewActivity")}/>
                 </View>
             )
