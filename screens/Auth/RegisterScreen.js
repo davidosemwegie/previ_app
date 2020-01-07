@@ -25,7 +25,7 @@ class RegisterScreen extends Component {
     handleSignUp = () => {
         const { name, email, password } = this.state
 
-        console.log(name)
+        const db = firebase.database().ref('/users')
 
         firebase
             .auth()
@@ -54,7 +54,7 @@ class RegisterScreen extends Component {
         return (
             <common.Screen title="Register" headerIcon="md-arrow-back" headerIconPress={() => this.props.navigation.goBack()} >
                 <View style={styles.form}>
-                    <AuthField title="Name" onChangeText={name => this.setState({ name })} />
+                    <AuthField title="First Name" onChangeText={name => this.setState({ name })} />
                     <AuthField title="Email Address" onChangeText={email => this.setState({ email })} autoCapitalize="none" />
                     <AuthField title="Password" secureTextEntry autoCapitalize="none" onChangeText={password => this.setState({ password })} />
                 </View>

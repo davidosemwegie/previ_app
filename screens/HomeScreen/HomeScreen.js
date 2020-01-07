@@ -14,6 +14,7 @@ import * as common from '../../common/index'
 
 import AddActivityButton from './components/AddActivityButton'
 import * as comp from './components/index'
+import { NavigationEvents } from 'react-navigation';
 // import BuildList from './components/BuildList'
 // import QuitList from './components/QuitList'
 
@@ -132,13 +133,15 @@ class HomeScreen extends Component {
 
     state = {
         email: "",
-        displayName: "",
+        name: "",
         date: "",
-        data: []
+        data: [],
+        list: []
     }
 
 
     componentDidMount() {
+
 
         // var user = firebase.auth().currentUser;
 
@@ -149,11 +152,7 @@ class HomeScreen extends Component {
         // });
 
 
-        const { email11, displayName } = firebase.auth().currentUser;
-
-        //this.setState({ email, displayName })
-
-        this.setState({ email: "david@gmail.com", displayName: "David" })
+        const { email, displayName } = firebase.auth().currentUser;
 
 
         /* INITALIING DATE */
@@ -162,32 +161,26 @@ class HomeScreen extends Component {
 
         const todayString = today.toDateString();
 
-        const year = today.getFullYear();      // 1980
-        const month = today.getMonth();         // 6
-        const date = today.getDate();          // 31
-        const day = today.getDay();           // 4
-
-
-        //Calculate Date Difference
-
-        const date1 = new Date('11/27/2019');
-        const date2 = today;
-        const diffTime = Math.abs(date2 - date1);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        // alert(`${diffDays} days`);
-
-
-
-        // this.setState({ date: `${date}-${month}-${year}` })
         this.setState({ date: todayString })
         this.setState({ data: this.data })
+        this.setState({ email: email })
+        this.setState({ email })
+        this.setState({ name: displayName })
+
+        const { navigation } = this.props;
+        //Adding an event listner om focus
+        //So whenever the screen will have focus it will set the state to zero
+        this.focusListener = navigation.addListener('didFocus', () => {
+            this.setState({ count: 0 });
+        });
+
+        //alert(displayName)
     }
 
     signOutUser = () => {
         firebase.auth().signOut();
     }
 
-    /* DATA OBJECT THAT SHOULD BE RETURNED FROM THE DATABASE */
 
 
     render() {
@@ -197,22 +190,20 @@ class HomeScreen extends Component {
         if (this.state.data.length == 0) {
             return (
                 <View style={{ flex: 1 }}>
-                    <common.Screen title={`Hello ${this.state.displayName}`} headerIcon="md-settings" headerIconPress={() => this.props.navigation.navigate("Settings")} subText={`${this.state.date}`}>
+                    <common.Screen title={`Hello ${this.state.name}`} headerIcon="md-settings" headerIconPress={() => this.props.navigation.navigate("Settings")} subText={`${this.state.date}`}>
                         <Text style={instructionText} allowFontScaling={false}>{`Click the '+' button at the bottom of the screem to add a new activity`}</Text>
                     </common.Screen>
-                    <AddActivityButton addActivityButtonPressed={() => this.props.navigation.navigate("NewActivity")}/>
+                    <AddActivityButton addActivityButtonPressed={() => this.props.navigation.navigate("NewActivity")} />
                 </View>
             )
         } else {
-
-
             return (
                 <View style={{ flex: 1 }}>
-                    <common.Screen title={`Hello ${this.state.displayName}`} headerIcon="md-settings" headerIconPress={() => this.props.navigation.navigate("Settings")} subText={`${this.state.date}`}>
-                        <comp.BuildList data={this.state.data} />
+                    <common.Screen title={`Hello ${this.state.name}`} headerIcon="md-settings" headerIconPress={() => this.props.navigation.navigate("Settings")} subText={`${this.state.date}`}>
+                        {/* <comp.BuildList data={this.state.data} /> */}
                         <comp.QuitList data={this.state.data} />
-                    </common.Screen  >    
-                    <AddActivityButton addActivityButtonPressed={() => this.props.navigation.navigate("NewActivity")}/>
+                    </common.Screen  >
+                    <AddActivityButton addActivityButtonPressed={() => this.props.navigation.navigate("NewActivity")} />
                 </View>
             )
         }

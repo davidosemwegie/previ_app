@@ -8,7 +8,7 @@ import {
 const ListTitle = (props) => {
     return(
     <View style={styles.container}>
-        <Text style={styles.title}>{props.title}</Text>
+        <Text style={styles.title} allowFontScaling={false}>{props.title}</Text>
     </View>
     )
     }
@@ -16,10 +16,11 @@ export default ListTitle;
 
 const styles = StyleSheet.create({
     container: {
-        
+        marginTop: 20,
+        marginHorizontal: 20
     },
     title: {
         fontFamily: "sf-rounded-semibold",
-        fontSize: 25
+        fontSize: 30
     }
 });
